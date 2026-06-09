@@ -21,6 +21,12 @@ TAIWAN_TZ = timezone(timedelta(hours=8))
 MAX_SECONDS = 7200
 GEMINI_MODEL = "gemini-2.5-flash"
 
+YTDLP = [
+    "yt-dlp",
+    "--js-runtimes",
+    "node"
+]
+
 SOURCES = [
     {
         "channel": "游庭皓",
@@ -72,8 +78,7 @@ def clean_json_text(text):
 
 
 def get_latest_video(source):
-    command = [
-        "yt-dlp",
+    command = YTDLP + [
         "--flat-playlist",
         "--playlist-end", "1",
         "--dump-json",
@@ -109,8 +114,7 @@ def download_subtitle(video):
 
     output_template = str(subtitle_dir / "%(id)s.%(ext)s")
 
-    command = [
-        "yt-dlp",
+    command = YTDLP + [
         "--skip-download",
         "--write-subs",
         "--write-auto-subs",
@@ -165,8 +169,7 @@ def download_audio(video):
 
     output_template = str(audio_dir / "%(id)s.%(ext)s")
 
-    command = [
-        "yt-dlp",
+    command = YTDLP + [
         "-x",
         "--audio-format", "mp3",
         "--download-sections", "*00:00:00-02:00:00",
