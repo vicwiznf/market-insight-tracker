@@ -25,6 +25,9 @@ function renderVideos(videos) {
             .map(item => `<li>${item}</li>`)
             .join("");
 
+        const transcriptStatus = video.transcriptStatus || "尚未偵測";
+        const transcriptLanguage = video.transcriptLanguage || "未知";
+
         container.innerHTML += `
         <div class="card">
 
@@ -40,6 +43,16 @@ function renderVideos(videos) {
             </div>
 
             <h3>${video.title}</h3>
+
+            <p>
+                <strong>字幕狀態：</strong>
+                ${transcriptStatus}
+            </p>
+
+            <p>
+                <strong>字幕語言：</strong>
+                ${transcriptLanguage}
+            </p>
 
             <section>
                 <h4>300 字摘要</h4>
