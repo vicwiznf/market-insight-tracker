@@ -1,3 +1,4 @@
 yt-dlp
-google-genai
 youtube-transcript-api
+google-genai
+faster-whisper
