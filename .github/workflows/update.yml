@@ -23,7 +23,7 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Fetch latest YouTube videos
-        run: python scripts/test_gemini_update.py
+        run: python scripts/update_market_data.py
 
       - name: Commit updated latest.json
         run: |
