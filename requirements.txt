@@ -1,2 +1,3 @@
-google-genai
 yt-dlp
+google-genai
+youtube-transcript-api
