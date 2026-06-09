@@ -27,53 +27,132 @@ SOURCES = [
     }
 ]
 
+PREFERRED_SUBTITLE_LANGS = [
+    "zh-Hant",
+    "zh-TW",
+    "zh-Hans",
+    "zh-CN",
+    "zh",
+    "en"
+]
 
-def run_ytdlp(url):
-    command = [
-        "yt-dlp",
-        "--flat-playlist",
-        "--playlist-end", "1",
-        "--dump-json",
-        url
-    ]
 
+def run_command(command):
     result = subprocess.run(
         command,
         capture_output=True,
         text=True,
         check=True
     )
-
-    lines = [line for line in result.stdout.splitlines() if line.strip()]
-
-    if not lines:
-        raise RuntimeError(f"No result from yt-dlp: {url}")
-
-    return json.loads(lines[0])
+    return result.stdout
 
 
 def normalize_date(upload_date):
     if not upload_date or len(upload_date) != 8:
         return "未知"
-
     return f"{upload_date[0:4]}/{upload_date[4:6]}/{upload_date[6:8]}"
 
 
-def fetch_video(source):
-    video = run_ytdlp(source["url"])
+def fetch_latest_video_basic(source):
+    command = [
+        "yt-dlp",
+        "--flat-playlist",
+        "--playlist-end", "1",
+        "--dump-json",
+        source["url"]
+    ]
 
+    output = run_command(command)
+    lines = [line for line in output.splitlines() if line.strip()]
+
+    if not lines:
+        raise RuntimeError(f"No video found for {source['channel']}")
+
+    video = json.loads(lines[0])
     video_id = video.get("id")
-    title = video.get("title", "無標題")
-    upload_date = normalize_date(video.get("upload_date"))
 
     if not video_id:
         raise RuntimeError(f"Missing video id for {source['channel']}")
 
     return {
         "channel": source["channel"],
-        "title": title,
-        "publishDate": upload_date,
-        "url": f"https://www.youtube.com/watch?v={video_id}",
+        "videoId": video_id,
+        "url": f"https://www.youtube.com/watch?v={video_id}"
+    }
+
+
+def fetch_video_detail(video_url):
+    command = [
+        "yt-dlp",
+        "--dump-single-json",
+        "--skip-download",
+        video_url
+    ]
+
+    output = run_command(command)
+    return json.loads(output)
+
+
+def choose_subtitle_language(subtitles, automatic_captions):
+    for lang in PREFERRED_SUBTITLE_LANGS:
+        if lang in subtitles:
+            return {
+                "status": "有字幕",
+                "source": "manual",
+                "language": lang
+            }
+
+    for lang in PREFERRED_SUBTITLE_LANGS:
+        if lang in automatic_captions:
+            return {
+                "status": "有自動字幕",
+                "source": "automatic",
+                "language": lang
+            }
+
+    if subtitles:
+        lang = next(iter(subtitles.keys()))
+        return {
+            "status": "有字幕",
+            "source": "manual",
+            "language": lang
+        }
+
+    if automatic_captions:
+        lang = next(iter(automatic_captions.keys()))
+        return {
+            "status": "有自動字幕",
+            "source": "automatic",
+            "language": lang
+        }
+
+    return {
+        "status": "無字幕，需走音訊轉文字",
+        "source": "audio_required",
+        "language": "none"
+    }
+
+
+def fetch_video(source):
+    basic = fetch_latest_video_basic(source)
+    detail = fetch_video_detail(basic["url"])
+
+    subtitles = detail.get("subtitles", {}) or {}
+    automatic_captions = detail.get("automatic_captions", {}) or {}
+
+    subtitle_info = choose_subtitle_language(subtitles, automatic_captions)
+
+    return {
+        "channel": source["channel"],
+        "videoId": basic["videoId"],
+        "title": detail.get("title", "無標題"),
+        "publishDate": normalize_date(detail.get("upload_date")),
+        "url": basic["url"],
+
+        "transcriptStatus": subtitle_info["status"],
+        "transcriptSource": subtitle_info["source"],
+        "transcriptLanguage": subtitle_info["language"],
+
         "summary": "已抓到最新影片，尚未進行 AI 摘要。",
         "highlights": [
             "尚未分析",
@@ -96,7 +175,12 @@ def main():
 
     for source in SOURCES:
         print(f"Fetching latest video: {source['channel']}")
-        videos.append(fetch_video(source))
+        video = fetch_video(source)
+        print(
+            f"{video['channel']} | {video['title']} | "
+            f"{video['transcriptStatus']} | {video['transcriptLanguage']}"
+        )
+        videos.append(video)
 
     now = datetime.now(TAIWAN_TZ)
 
