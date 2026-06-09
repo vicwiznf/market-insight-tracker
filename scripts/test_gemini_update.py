@@ -1,5 +1,6 @@
 import json
 import os
+import time
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
@@ -10,6 +11,27 @@ ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_FILE = ROOT / "data" / "latest.json"
 
 TAIWAN_TZ = timezone(timedelta(hours=8))
+
+MODELS = [
+    "gemini-2.0-flash",
+    "gemini-2.0-flash-lite",
+    "gemini-1.5-flash"
+]
+
+
+def clean_json_text(text: str) -> str:
+    text = text.strip()
+
+    if text.startswith("```"):
+        text = text.replace("```json", "").replace("```", "").strip()
+
+    start = text.find("{")
+    end = text.rfind("}")
+
+    if start == -1 or end == -1:
+        raise ValueError("Gemini response does not contain JSON.")
+
+    return text[start:end + 1]
 
 
 def ask_gemini() -> dict:
@@ -56,27 +78,35 @@ videos 必須有四筆，channel 分別是：
 游庭皓、股癌、M觀點、科技浪。
 """
 
-    response = client.models.generate_content(
-        model="gemini-2.5-flash",
-        contents=prompt,
-    )
+    last_error = None
 
-    text = response.text.strip()
+    for model in MODELS:
+        for attempt in range(3):
+            try:
+                print(f"Trying model: {model}, attempt: {attempt + 1}")
 
-    if text.startswith("```"):
-        text = text.replace("```json", "").replace("```", "").strip()
+                response = client.models.generate_content(
+                    model=model,
+                    contents=prompt,
+                )
 
-    data = json.loads(text)
+                text = clean_json_text(response.text)
+                return json.loads(text)
 
-    now = datetime.now(TAIWAN_TZ)
-    data["status"] = "最後更新成功"
-    data["lastUpdated"] = now.strftime("%Y/%m/%d %H:%M")
+            except Exception as error:
+                last_error = error
+                print(f"Failed with {model}: {error}")
+                time.sleep(5)
 
-    return data
+    raise RuntimeError(f"All Gemini models failed. Last error: {last_error}")
 
 
 def main():
     data = ask_gemini()
+
+    now = datetime.now(TAIWAN_TZ)
+    data["status"] = "最後更新成功"
+    data["lastUpdated"] = now.strftime("%Y/%m/%d %H:%M")
 
     OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
 
