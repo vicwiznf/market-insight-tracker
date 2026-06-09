@@ -6,7 +6,6 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_FILE = ROOT / "data" / "latest.json"
-
 TAIWAN_TZ = timezone(timedelta(hours=8))
 
 SOURCES = [
@@ -29,13 +28,12 @@ SOURCES = [
 ]
 
 
-def run_ytdlp(url: str) -> dict:
+def run_ytdlp(url):
     command = [
         "yt-dlp",
-        "--dump-single-json",
-        "--playlist-end",
-        "1",
         "--flat-playlist",
+        "--playlist-end", "1",
+        "--dump-json",
         url
     ]
 
@@ -46,32 +44,37 @@ def run_ytdlp(url: str) -> dict:
         check=True
     )
 
-    return json.loads(result.stdout)
+    lines = [line for line in result.stdout.splitlines() if line.strip()]
+
+    if not lines:
+        raise RuntimeError(f"No result from yt-dlp: {url}")
+
+    return json.loads(lines[0])
 
 
-def fetch_latest_video(source: dict) -> dict:
-    data = run_ytdlp(source["url"])
+def normalize_date(upload_date):
+    if not upload_date or len(upload_date) != 8:
+        return "未知"
 
-    entries = data.get("entries", [])
+    return f"{upload_date[0:4]}/{upload_date[4:6]}/{upload_date[6:8]}"
 
-    if not entries:
-        raise RuntimeError(f"No video found for {source['channel']}")
 
-    video = entries[0]
+def fetch_video(source):
+    video = run_ytdlp(source["url"])
 
     video_id = video.get("id")
     title = video.get("title", "無標題")
+    upload_date = normalize_date(video.get("upload_date"))
 
-    video_url = f"https://www.youtube.com/watch?v={video_id}"
+    if not video_id:
+        raise RuntimeError(f"Missing video id for {source['channel']}")
 
     return {
         "channel": source["channel"],
         "title": title,
-        "publishDate": video.get("upload_date", "未知"),
-        "url": video_url,
-
+        "publishDate": upload_date,
+        "url": f"https://www.youtube.com/watch?v={video_id}",
         "summary": "已抓到最新影片，尚未進行 AI 摘要。",
-
         "highlights": [
             "尚未分析",
             "尚未分析",
@@ -79,13 +82,11 @@ def fetch_latest_video(source: dict) -> dict:
             "尚未分析",
             "尚未分析"
         ],
-
         "investmentInsight": {
             "shortTerm": "尚未分析",
             "midTerm": "尚未分析",
             "longTerm": "尚未分析"
         },
-
         "warning": "尚未分析"
     }
 
@@ -94,12 +95,12 @@ def main():
     videos = []
 
     for source in SOURCES:
-        print(f"Fetching: {source['channel']}")
-        videos.append(fetch_latest_video(source))
+        print(f"Fetching latest video: {source['channel']}")
+        videos.append(fetch_video(source))
 
     now = datetime.now(TAIWAN_TZ)
 
-    output = {
+    data = {
         "status": "最後更新成功",
         "lastUpdated": now.strftime("%Y/%m/%d %H:%M"),
         "videos": videos,
@@ -113,9 +114,9 @@ def main():
     OUTPUT_FILE.parent.mkdir(parents=True, exist_ok=True)
 
     with OUTPUT_FILE.open("w", encoding="utf-8") as f:
-        json.dump(output, f, ensure_ascii=False, indent=2)
+        json.dump(data, f, ensure_ascii=False, indent=2)
 
-    print("latest.json updated with latest YouTube videos.")
+    print("latest.json updated successfully.")
 
 
 if __name__ == "__main__":
