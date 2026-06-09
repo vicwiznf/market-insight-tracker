@@ -3,12 +3,12 @@ import os
 import re
 import shutil
 import subprocess
+import time
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 
+import requests
 import webvtt
-import whisper
-from google import genai
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -18,8 +18,8 @@ TEMP_DIR = ROOT / "tmp"
 
 TAIWAN_TZ = timezone(timedelta(hours=8))
 
-MAX_SECONDS = 7200
-GEMINI_MODEL = "gemini-2.5-flash"
+OPENROUTER_MODEL = "openrouter/free"
+MAX_TRANSCRIPT_CHARS = 45000
 
 YTDLP = [
     "yt-dlp",
@@ -72,9 +72,64 @@ def clean_json_text(text):
     end = text.rfind("}")
 
     if start == -1 or end == -1:
-        raise ValueError("Gemini 沒有回傳 JSON")
+        raise ValueError("AI 沒有回傳 JSON")
 
     return text[start:end + 1]
+
+
+def openrouter_json(prompt):
+    api_key = os.environ.get("OPENROUTER_API_KEY")
+
+    if not api_key:
+        raise RuntimeError("缺少 OPENROUTER_API_KEY")
+
+    url = "https://openrouter.ai/api/v1/chat/completions"
+
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json",
+        "HTTP-Referer": "https://vicwiznf.github.io/market-insight-tracker/",
+        "X-Title": "Market Insight Tracker"
+    }
+
+    payload = {
+        "model": OPENROUTER_MODEL,
+        "messages": [
+            {
+                "role": "user",
+                "content": prompt
+            }
+        ],
+        "temperature": 0.2
+    }
+
+    last_error = None
+
+    for attempt in range(3):
+        try:
+            response = requests.post(
+                url,
+                headers=headers,
+                json=payload,
+                timeout=120
+            )
+
+            if response.status_code >= 400:
+                raise RuntimeError(
+                    f"OpenRouter HTTP {response.status_code}: {response.text[:500]}"
+                )
+
+            data = response.json()
+            content = data["choices"][0]["message"]["content"]
+
+            return json.loads(clean_json_text(content))
+
+        except Exception as error:
+            last_error = error
+            print(f"OpenRouter 嘗試失敗 {attempt + 1}/3：{error}")
+            time.sleep(10)
+
+    raise RuntimeError(last_error)
 
 
 def get_latest_video(source):
@@ -92,7 +147,6 @@ def get_latest_video(source):
         raise RuntimeError(f"找不到影片：{source['channel']}")
 
     data = json.loads(lines[0])
-
     video_id = data.get("id")
     title = data.get("title", "無標題")
 
@@ -132,7 +186,7 @@ def download_subtitle(video):
     vtt_files = list(subtitle_dir.glob("*.vtt"))
 
     if not vtt_files:
-        return None
+        raise RuntimeError("找不到字幕或自動字幕")
 
     priority = ["zh-Hant", "zh-TW", "zh-Hans", "zh-CN", ".zh.", ".en."]
 
@@ -163,93 +217,29 @@ def parse_vtt(vtt_path):
     return clean_text(" ".join(lines))
 
 
-def download_audio(video):
-    audio_dir = TEMP_DIR / video["videoId"] / "audio"
-    audio_dir.mkdir(parents=True, exist_ok=True)
-
-    output_template = str(audio_dir / "%(id)s.%(ext)s")
-
-    command = YTDLP + [
-        "-x",
-        "--audio-format", "mp3",
-        "--download-sections", "*00:00:00-02:00:00",
-        "-o",
-        output_template,
-        video["url"]
-    ]
-
-    run_command(command)
-
-    files = list(audio_dir.glob("*.*"))
-
-    if not files:
-        raise RuntimeError("音訊下載失敗")
-
-    return files[0]
-
-
-def transcribe_audio(audio_path):
-    model = whisper.load_model("tiny")
-
-    result = model.transcribe(
-        str(audio_path),
-        language="zh",
-        fp16=False
-    )
-
-    return clean_text(result.get("text", ""))
-
-
 def get_transcript(video):
-    try:
-        vtt_path = download_subtitle(video)
+    vtt_path = download_subtitle(video)
+    text = parse_vtt(vtt_path)
 
-        if vtt_path:
-            text = parse_vtt(vtt_path)
+    if len(text) < 100:
+        raise RuntimeError("字幕內容太短，無法分析")
 
-            if len(text) > 100:
-                return {
-                    "source": "youtube_subtitle",
-                    "text": text
-                }
-
-        raise RuntimeError("沒有可用字幕")
-
-    except Exception as error:
-        print(f"{video['channel']} 字幕不可用，改用音訊轉文字：{error}")
-
-        audio_path = download_audio(video)
-        text = transcribe_audio(audio_path)
-
-        return {
-            "source": "audio_whisper",
-            "text": text
-        }
+    return text[:MAX_TRANSCRIPT_CHARS]
 
 
-def limit_transcript(text):
-    max_chars = 60000
-
-    if len(text) <= max_chars:
-        return text
-
-    return text[:max_chars]
-
-
-def analyze_video_with_gemini(client, video, transcript):
-    transcript = limit_transcript(transcript)
-
+def analyze_video(video, transcript):
     prompt = f"""
 你是一個市場與股市影片整理系統。
 
 請完全依照影片內容整理，不要加入你自己的投資建議，不要自行補充影片沒有說的內容。
+如果影片沒有明確談到市場、總經、產業、股市或投資，請直接說明「本影片市場與股市內容有限」。
 
 影片資料：
 頻道：{video["channel"]}
 標題：{video["title"]}
 連結：{video["url"]}
 
-逐字稿如下：
+文字稿：
 {transcript}
 
 請只輸出 JSON，不要 Markdown，不要 ```。
@@ -266,43 +256,37 @@ def analyze_video_with_gemini(client, video, transcript):
     "重點五"
   ],
   "investmentInsight": {{
-    "shortTerm": "短期 1～3 個月，完全依照影片內容",
-    "midTerm": "中期 3～12 個月，完全依照影片內容",
-    "longTerm": "長期 1 年以上，完全依照影片內容"
+    "shortTerm": "短期 1～3 個月，完全依照影片內容；沒有提到就寫影片未明確提到",
+    "midTerm": "中期 3～12 個月，完全依照影片內容；沒有提到就寫影片未明確提到",
+    "longTerm": "長期 1 年以上，完全依照影片內容；沒有提到就寫影片未明確提到"
   }},
   "warning": "影片中提到的風險、前提、限制；如果影片沒有提到，請寫：影片未明確提到相關風險。"
 }}
 """
 
-    response = client.models.generate_content(
-        model=GEMINI_MODEL,
-        contents=prompt
-    )
-
-    text = clean_json_text(response.text)
-    return json.loads(text)
+    return openrouter_json(prompt)
 
 
-def build_fallback_analysis(error):
+def fallback_analysis(error):
     return {
-        "summary": f"AI 摘要失敗：{str(error)[:180]}",
+        "summary": f"摘要失敗：{str(error)[:220]}",
         "highlights": [
-            "AI 摘要失敗",
-            "AI 摘要失敗",
-            "AI 摘要失敗",
-            "AI 摘要失敗",
-            "AI 摘要失敗"
+            "摘要失敗",
+            "摘要失敗",
+            "摘要失敗",
+            "摘要失敗",
+            "摘要失敗"
         ],
         "investmentInsight": {
-            "shortTerm": "AI 摘要失敗",
-            "midTerm": "AI 摘要失敗",
-            "longTerm": "AI 摘要失敗"
+            "shortTerm": "摘要失敗",
+            "midTerm": "摘要失敗",
+            "longTerm": "摘要失敗"
         },
-        "warning": "請確認 Gemini API 額度或查看 GitHub Actions log。"
+        "warning": "請查看 GitHub Actions log，可能是 OpenRouter 額度、YouTube 字幕或 yt-dlp 問題。"
     }
 
 
-def analyze_consensus_with_gemini(client, videos):
+def analyze_consensus(videos):
     compact = []
 
     for video in videos:
@@ -346,28 +330,20 @@ def analyze_consensus_with_gemini(client, videos):
 }}
 """
 
-    response = client.models.generate_content(
-        model=GEMINI_MODEL,
-        contents=prompt
-    )
-
-    text = clean_json_text(response.text)
-    return json.loads(text)
+    return openrouter_json(prompt)
 
 
-def build_video(source, client):
+def build_video(source):
     video = get_latest_video(source)
 
     try:
-        transcript_result = get_transcript(video)
-        transcript = transcript_result["text"]
-        transcript_source = transcript_result["source"]
+        transcript = get_transcript(video)
 
-        video["transcriptStatus"] = "已取得文字稿"
-        video["transcriptSource"] = transcript_source
+        video["transcriptStatus"] = "已取得字幕"
+        video["transcriptSource"] = "youtube_subtitle"
         video["transcriptLength"] = len(transcript)
 
-        analysis = analyze_video_with_gemini(client, video, transcript)
+        analysis = analyze_video(video, transcript)
 
         video["summary"] = analysis["summary"]
         video["highlights"] = analysis["highlights"]
@@ -375,16 +351,16 @@ def build_video(source, client):
         video["warning"] = analysis["warning"]
 
     except Exception as error:
-        video["transcriptStatus"] = "文字稿或 AI 分析失敗"
+        video["transcriptStatus"] = "字幕或 AI 分析失敗"
         video["transcriptSource"] = "error"
         video["transcriptLength"] = 0
 
-        fallback = build_fallback_analysis(error)
+        analysis = fallback_analysis(error)
 
-        video["summary"] = fallback["summary"]
-        video["highlights"] = fallback["highlights"]
-        video["investmentInsight"] = fallback["investmentInsight"]
-        video["warning"] = fallback["warning"]
+        video["summary"] = analysis["summary"]
+        video["highlights"] = analysis["highlights"]
+        video["investmentInsight"] = analysis["investmentInsight"]
+        video["warning"] = analysis["warning"]
 
     return video
 
@@ -397,23 +373,16 @@ def main():
 
     TEMP_DIR.mkdir(parents=True, exist_ok=True)
 
-    api_key = os.environ.get("GEMINI_API_KEY")
-
-    if not api_key:
-        raise RuntimeError("缺少 GEMINI_API_KEY")
-
-    client = genai.Client(api_key=api_key)
-
     videos = []
 
     for source in SOURCES:
         print(f"處理：{source['channel']}")
-        video = build_video(source, client)
+        video = build_video(source)
         print(f"{video['channel']} | {video['title']} | {video['transcriptStatus']}")
         videos.append(video)
 
     try:
-        consensus = analyze_consensus_with_gemini(client, videos)
+        consensus = analyze_consensus(videos)
     except Exception as error:
         consensus = {
             "commonTopics": [f"市場共識整理失敗：{str(error)[:120]}"],
@@ -424,7 +393,7 @@ def main():
     now = datetime.now(TAIWAN_TZ)
 
     data = {
-        "status": "AI 摘要更新完成",
+        "status": "OpenRouter 摘要更新完成",
         "lastUpdated": now.strftime("%Y/%m/%d %H:%M"),
         "videos": videos,
         "consensus": consensus
