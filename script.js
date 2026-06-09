@@ -25,13 +25,6 @@ function renderVideos(videos) {
             .map(item => `<li>${item}</li>`)
             .join("");
 
-        const transcriptPath = video.transcriptPath || "";
-        const transcriptLink = transcriptPath
-            ? `<a href="${transcriptPath}" target="_blank">查看完整逐字稿</a>`
-            : `<span>無逐字稿</span>`;
-
-        const chunkCount = video.chunkCount || 0;
-
         container.innerHTML += `
         <div class="card">
 
@@ -43,21 +36,14 @@ function renderVideos(videos) {
             </div>
 
             <div class="meta">
-                ${video.publishDate}
+                ${video.publishDate || "未知"}
             </div>
 
             <h3>${video.title}</h3>
 
-            <p><strong>逐字稿狀態：</strong>${video.transcriptStatus || "未知"}</p>
-            <p><strong>逐字稿來源：</strong>${video.transcriptSource || "未知"}</p>
-            <p><strong>逐字稿字數：</strong>${video.transcriptLength || 0}</p>
-            <p><strong>分段數量：</strong>${chunkCount}</p>
-            <p><strong>逐字稿：</strong>${transcriptLink}</p>
-
-            <section>
-                <h4>逐字稿預覽</h4>
-                <p>${video.transcriptPreview || "尚無逐字稿預覽。"}</p>
-            </section>
+            <p><strong>文字稿狀態：</strong>${video.transcriptStatus || "未知"}</p>
+            <p><strong>文字稿來源：</strong>${video.transcriptSource || "未知"}</p>
+            <p><strong>文字稿字數：</strong>${video.transcriptLength || 0}</p>
 
             <section>
                 <h4>300 字摘要</h4>
