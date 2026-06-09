@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Market Insight Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <h1>Market Insight Tracker</h1>
+      <p>市場觀點追蹤器</p>
+    </div>
+
+    <div class="status-box">
+      <span id="update-status">讀取中...</span>
+      <small id="last-updated">--</small>
+    </div>
+  </header>
+
+  <main>
+    <section class="actions">
+      <button id="update-btn">更新分析</button>
+      <p id="update-message"></p>
+    </section>
+
+    <section class="grid" id="video-cards"></section>
+
+    <section class="consensus-card">
+      <h2>市場共識整理</h2>
+      <div id="consensus"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
