@@ -1,38 +1,40 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Market Insight Tracker</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <link rel="stylesheet" href="style.css?v=3">
 </head>
+
 <body>
-  <header class="topbar">
-    <div>
-      <h1>Market Insight Tracker</h1>
-      <p>市場觀點追蹤器</p>
-    </div>
 
-    <div class="status-box">
-      <span id="update-status">讀取中...</span>
-      <small id="last-updated">--</small>
-    </div>
-  </header>
+<header class="topbar">
+  <div>
+    <h1>Market Insight Tracker</h1>
+    <p>市場觀點追蹤器</p>
+  </div>
 
-  <main>
-    <section class="actions">
-      <button id="update-btn">更新分析</button>
-      <p id="update-message"></p>
-    </section>
+  <div class="status-box">
+    <span id="update-status">讀取中...</span>
+    <small id="last-updated">--</small>
+  </div>
+</header>
 
-    <section class="grid" id="video-cards"></section>
+<section class="actions">
+  <button id="update-btn">更新分析</button>
+  <p id="update-message"></p>
+</section>
 
-    <section class="consensus-card">
-      <h2>市場共識整理</h2>
-      <div id="consensus"></div>
-    </section>
-  </main>
+<section class="grid" id="video-cards"></section>
 
-  <script src="script.js"></script>
+<section class="consensus-card">
+  <h2>市場共識整理</h2>
+  <div id="consensus"></div>
+</section>
+
+<script src="script.js?v=3"></script>
+
 </body>
 </html>
