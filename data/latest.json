@@ -8,30 +8,118 @@
       "title": "測試影片",
       "publishDate": "2026/06/09",
       "url": "https://youtube.com",
-      "summary": "這是測試摘要。"
+
+      "summary": "這是 300 字摘要。",
+
+      "highlights": [
+        "重點一",
+        "重點二",
+        "重點三",
+        "重點四",
+        "重點五"
+      ],
+
+      "investmentInsight": {
+        "shortTerm": "短期投資啟發",
+        "midTerm": "中期投資啟發",
+        "longTerm": "長期投資啟發"
+      },
+
+      "warning": "需要注意的風險與前提。"
     },
+
     {
       "channel": "股癌",
       "title": "測試影片",
       "publishDate": "2026/06/09",
       "url": "https://youtube.com",
-      "summary": "這是測試摘要。"
+
+      "summary": "這是 300 字摘要。",
+
+      "highlights": [
+        "重點一",
+        "重點二",
+        "重點三",
+        "重點四",
+        "重點五"
+      ],
+
+      "investmentInsight": {
+        "shortTerm": "短期投資啟發",
+        "midTerm": "中期投資啟發",
+        "longTerm": "長期投資啟發"
+      },
+
+      "warning": "需要注意的風險與前提。"
     },
+
     {
       "channel": "M觀點",
       "title": "測試影片",
       "publishDate": "2026/06/09",
       "url": "https://youtube.com",
-      "summary": "這是測試摘要。"
+
+      "summary": "這是 300 字摘要。",
+
+      "highlights": [
+        "重點一",
+        "重點二",
+        "重點三",
+        "重點四",
+        "重點五"
+      ],
+
+      "investmentInsight": {
+        "shortTerm": "短期投資啟發",
+        "midTerm": "中期投資啟發",
+        "longTerm": "長期投資啟發"
+      },
+
+      "warning": "需要注意的風險與前提。"
     },
+
     {
       "channel": "科技浪",
       "title": "測試影片",
       "publishDate": "2026/06/09",
       "url": "https://youtube.com",
-      "summary": "這是測試摘要。"
+
+      "summary": "這是 300 字摘要。",
+
+      "highlights": [
+        "重點一",
+        "重點二",
+        "重點三",
+        "重點四",
+        "重點五"
+      ],
+
+      "investmentInsight": {
+        "shortTerm": "短期投資啟發",
+        "midTerm": "中期投資啟發",
+        "longTerm": "長期投資啟發"
+      },
+
+      "warning": "需要注意的風險與前提。"
     }
   ],
 
-  "consensus": "這裡將顯示市場共識整理。"
+  "consensus": {
+    "commonTopics": [
+      "AI",
+      "FED",
+      "半導體"
+    ],
+
+    "differentViews": [
+      "美元走勢",
+      "Tesla"
+    ],
+
+    "marketFocus": [
+      "美國利率",
+      "匯率",
+      "關稅政策"
+    ]
+  }
 }
