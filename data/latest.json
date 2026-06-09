@@ -1,125 +1,97 @@
 {
   "status": "最後更新成功",
-  "lastUpdated": "2026/06/09 10:30",
-
+  "lastUpdated": "2026/06/09 13:28",
   "videos": [
     {
       "channel": "游庭皓",
-      "title": "測試影片",
-      "publishDate": "2026/06/09",
-      "url": "https://youtube.com",
-
-      "summary": "這是 300 字摘要。",
-
+      "title": "2026/6/9(二)OpenAI將上市 蘋果衝AI 市場不買單! 美股大彈 修正結束了?【早晨財經速解讀】",
+      "publishDate": "未知",
+      "url": "https://www.youtube.com/watch?v=8H0D_RYS-zQ",
+      "summary": "已抓到最新影片，尚未進行 AI 摘要。",
       "highlights": [
-        "重點一",
-        "重點二",
-        "重點三",
-        "重點四",
-        "重點五"
+        "尚未分析",
+        "尚未分析",
+        "尚未分析",
+        "尚未分析",
+        "尚未分析"
       ],
-
       "investmentInsight": {
-        "shortTerm": "短期投資啟發",
-        "midTerm": "中期投資啟發",
-        "longTerm": "長期投資啟發"
+        "shortTerm": "尚未分析",
+        "midTerm": "尚未分析",
+        "longTerm": "尚未分析"
       },
-
-      "warning": "需要注意的風險與前提。"
+      "warning": "尚未分析"
     },
-
     {
       "channel": "股癌",
-      "title": "測試影片",
-      "publishDate": "2026/06/09",
-      "url": "https://youtube.com",
-
-      "summary": "這是 300 字摘要。",
-
+      "title": "EP668 | 🦞",
+      "publishDate": "未知",
+      "url": "https://www.youtube.com/watch?v=xgOQsb-MIGY",
+      "summary": "已抓到最新影片，尚未進行 AI 摘要。",
       "highlights": [
-        "重點一",
-        "重點二",
-        "重點三",
-        "重點四",
-        "重點五"
+        "尚未分析",
+        "尚未分析",
+        "尚未分析",
+        "尚未分析",
+        "尚未分析"
       ],
-
       "investmentInsight": {
-        "shortTerm": "短期投資啟發",
-        "midTerm": "中期投資啟發",
-        "longTerm": "長期投資啟發"
+        "shortTerm": "尚未分析",
+        "midTerm": "尚未分析",
+        "longTerm": "尚未分析"
       },
-
-      "warning": "需要注意的風險與前提。"
+      "warning": "尚未分析"
     },
-
     {
       "channel": "M觀點",
-      "title": "測試影片",
-      "publishDate": "2026/06/09",
-      "url": "https://youtube.com",
-
-      "summary": "這是 300 字摘要。",
-
+      "title": "EP309. 谷歌租 xAI 算力、微軟低調的新模型、股市修正終於來了嗎 | M觀點",
+      "publishDate": "未知",
+      "url": "https://www.youtube.com/watch?v=Z_5j7gsYlNc",
+      "summary": "已抓到最新影片，尚未進行 AI 摘要。",
       "highlights": [
-        "重點一",
-        "重點二",
-        "重點三",
-        "重點四",
-        "重點五"
+        "尚未分析",
+        "尚未分析",
+        "尚未分析",
+        "尚未分析",
+        "尚未分析"
       ],
-
       "investmentInsight": {
-        "shortTerm": "短期投資啟發",
-        "midTerm": "中期投資啟發",
-        "longTerm": "長期投資啟發"
+        "shortTerm": "尚未分析",
+        "midTerm": "尚未分析",
+        "longTerm": "尚未分析"
       },
-
-      "warning": "需要注意的風險與前提。"
+      "warning": "尚未分析"
     },
-
     {
       "channel": "科技浪",
-      "title": "測試影片",
-      "publishDate": "2026/06/09",
-      "url": "https://youtube.com",
-
-      "summary": "這是 300 字摘要。",
-
+      "title": "EP141 - AI Agent 沒想像中有用？個人 AI 裝置即將迎來革命！哈利的 COMPUTEX 逛展心得",
+      "publishDate": "未知",
+      "url": "https://www.youtube.com/watch?v=LGY_bR5OXBo",
+      "summary": "已抓到最新影片，尚未進行 AI 摘要。",
       "highlights": [
-        "重點一",
-        "重點二",
-        "重點三",
-        "重點四",
-        "重點五"
+        "尚未分析",
+        "尚未分析",
+        "尚未分析",
+        "尚未分析",
+        "尚未分析"
       ],
-
       "investmentInsight": {
-        "shortTerm": "短期投資啟發",
-        "midTerm": "中期投資啟發",
-        "longTerm": "長期投資啟發"
+        "shortTerm": "尚未分析",
+        "midTerm": "尚未分析",
+        "longTerm": "尚未分析"
       },
-
-      "warning": "需要注意的風險與前提。"
+      "warning": "尚未分析"
     }
   ],
-
   "consensus": {
     "commonTopics": [
-      "AI",
-      "FED",
-      "半導體"
+      "尚未分析"
     ],
-
     "differentViews": [
-      "美元走勢",
-      "Tesla"
+      "尚未分析"
     ],
-
     "marketFocus": [
-      "美國利率",
-      "匯率",
-      "關稅政策"
+      "尚未分析"
     ]
   }
 }
