@@ -1,6 +1,6 @@
 {
   "status": "AI 摘要更新完成",
-  "lastUpdated": "2026/06/09 15:05",
+  "lastUpdated": "2026/06/09 15:15",
   "videos": [
     {
       "channel": "游庭皓",
@@ -100,14 +100,8 @@
     }
   ],
   "consensus": {
-    "commonTopics": [
-      "市場共識整理失敗：503 UNAVAILABLE. {'error': {'code': 503, 'message': 'This model is currently experiencing high demand. Spikes in demand "
-    ],
-    "differentViews": [
-      "市場共識整理失敗"
-    ],
-    "marketFocus": [
-      "市場共識整理失敗"
-    ]
+    "commonTopics": [],
+    "differentViews": [],
+    "marketFocus": []
   }
 }
