@@ -19,10 +19,13 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Install ffmpeg
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Fetch latest YouTube videos
+      - name: Update market data
         run: python scripts/update_market_data.py
 
       - name: Commit updated latest.json
@@ -30,5 +33,5 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add data/latest.json
-          git commit -m "Fetch latest YouTube videos" || echo "No changes to commit"
+          git commit -m "Update market data" || echo "No changes to commit"
           git push
