@@ -25,8 +25,12 @@ function renderVideos(videos) {
             .map(item => `<li>${item}</li>`)
             .join("");
 
-        const transcriptStatus = video.transcriptStatus || "尚未偵測";
-        const transcriptLanguage = video.transcriptLanguage || "未知";
+        const transcriptPath = video.transcriptPath || "";
+        const transcriptLink = transcriptPath
+            ? `<a href="${transcriptPath}" target="_blank">查看完整逐字稿</a>`
+            : `<span>無逐字稿</span>`;
+
+        const chunkCount = video.chunkCount || 0;
 
         container.innerHTML += `
         <div class="card">
@@ -44,15 +48,16 @@ function renderVideos(videos) {
 
             <h3>${video.title}</h3>
 
-            <p>
-                <strong>字幕狀態：</strong>
-                ${transcriptStatus}
-            </p>
+            <p><strong>逐字稿狀態：</strong>${video.transcriptStatus || "未知"}</p>
+            <p><strong>逐字稿來源：</strong>${video.transcriptSource || "未知"}</p>
+            <p><strong>逐字稿字數：</strong>${video.transcriptLength || 0}</p>
+            <p><strong>分段數量：</strong>${chunkCount}</p>
+            <p><strong>逐字稿：</strong>${transcriptLink}</p>
 
-            <p>
-                <strong>字幕語言：</strong>
-                ${transcriptLanguage}
-            </p>
+            <section>
+                <h4>逐字稿預覽</h4>
+                <p>${video.transcriptPreview || "尚無逐字稿預覽。"}</p>
+            </section>
 
             <section>
                 <h4>300 字摘要</h4>
@@ -61,29 +66,14 @@ function renderVideos(videos) {
 
             <section>
                 <h4>五個重點</h4>
-                <ul>
-                    ${highlights}
-                </ul>
+                <ul>${highlights}</ul>
             </section>
 
             <section>
                 <h4>投資啟發</h4>
-
-                <p>
-                    <strong>短期：</strong>
-                    ${video.investmentInsight.shortTerm}
-                </p>
-
-                <p>
-                    <strong>中期：</strong>
-                    ${video.investmentInsight.midTerm}
-                </p>
-
-                <p>
-                    <strong>長期：</strong>
-                    ${video.investmentInsight.longTerm}
-                </p>
-
+                <p><strong>短期：</strong>${video.investmentInsight.shortTerm}</p>
+                <p><strong>中期：</strong>${video.investmentInsight.midTerm}</p>
+                <p><strong>長期：</strong>${video.investmentInsight.longTerm}</p>
             </section>
 
             <section>
@@ -105,26 +95,17 @@ function renderConsensus(consensus) {
 
         <div>
             <h3>共同關注主題</h3>
-
-            <ul>
-                ${consensus.commonTopics.map(i => `<li>${i}</li>`).join("")}
-            </ul>
+            <ul>${consensus.commonTopics.map(i => `<li>${i}</li>`).join("")}</ul>
         </div>
 
         <div>
             <h3>有分歧的議題</h3>
-
-            <ul>
-                ${consensus.differentViews.map(i => `<li>${i}</li>`).join("")}
-            </ul>
+            <ul>${consensus.differentViews.map(i => `<li>${i}</li>`).join("")}</ul>
         </div>
 
         <div>
             <h3>今日市場焦點</h3>
-
-            <ul>
-                ${consensus.marketFocus.map(i => `<li>${i}</li>`).join("")}
-            </ul>
+            <ul>${consensus.marketFocus.map(i => `<li>${i}</li>`).join("")}</ul>
         </div>
 
     </div>
