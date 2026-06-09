@@ -1,6 +1,6 @@
 {
   "status": "最後更新成功",
-  "lastUpdated": "2026/06/09 13:58",
+  "lastUpdated": "2026/06/09 14:31",
   "videos": [
     {
       "channel": "游庭皓",
@@ -8,12 +8,12 @@
       "title": "2026/6/9(二)OpenAI將上市 蘋果衝AI 市場不買單! 美股大彈 修正結束了?【早晨財經速解讀】",
       "publishDate": "未知",
       "url": "https://www.youtube.com/watch?v=8H0D_RYS-zQ",
-      "transcriptStatus": "字幕偵測失敗",
-      "transcriptSource": "error",
+      "transcriptStatus": "暫未啟用",
+      "transcriptSource": "disabled",
       "transcriptLanguage": "unknown",
       "transcriptLength": 0,
-      "transcriptPreview": "type object 'YouTubeTranscriptApi' has no attribute 'list_transcripts'",
-      "summary": "已抓到最新影片與字幕狀態，尚未進行 AI 摘要。",
+      "transcriptPreview": "",
+      "summary": "已抓到最新影片，AI 摘要尚未啟用。",
       "highlights": [
         "尚未分析",
         "尚未分析",
@@ -26,7 +26,7 @@
         "midTerm": "尚未分析",
         "longTerm": "尚未分析"
       },
-      "warning": "尚未分析"
+      "warning": "目前版本僅抓取最新影片，不進行字幕、語音或 AI 分析。"
     },
     {
       "channel": "股癌",
@@ -34,12 +34,12 @@
       "title": "EP668 | 🦞",
       "publishDate": "未知",
       "url": "https://www.youtube.com/watch?v=xgOQsb-MIGY",
-      "transcriptStatus": "字幕偵測失敗",
-      "transcriptSource": "error",
+      "transcriptStatus": "暫未啟用",
+      "transcriptSource": "disabled",
       "transcriptLanguage": "unknown",
       "transcriptLength": 0,
-      "transcriptPreview": "type object 'YouTubeTranscriptApi' has no attribute 'list_transcripts'",
-      "summary": "已抓到最新影片與字幕狀態，尚未進行 AI 摘要。",
+      "transcriptPreview": "",
+      "summary": "已抓到最新影片，AI 摘要尚未啟用。",
       "highlights": [
         "尚未分析",
         "尚未分析",
@@ -52,7 +52,7 @@
         "midTerm": "尚未分析",
         "longTerm": "尚未分析"
       },
-      "warning": "尚未分析"
+      "warning": "目前版本僅抓取最新影片，不進行字幕、語音或 AI 分析。"
     },
     {
       "channel": "M觀點",
@@ -60,12 +60,12 @@
       "title": "EP309. 谷歌租 xAI 算力、微軟低調的新模型、股市修正終於來了嗎 | M觀點",
       "publishDate": "未知",
       "url": "https://www.youtube.com/watch?v=Z_5j7gsYlNc",
-      "transcriptStatus": "字幕偵測失敗",
-      "transcriptSource": "error",
+      "transcriptStatus": "暫未啟用",
+      "transcriptSource": "disabled",
       "transcriptLanguage": "unknown",
       "transcriptLength": 0,
-      "transcriptPreview": "type object 'YouTubeTranscriptApi' has no attribute 'list_transcripts'",
-      "summary": "已抓到最新影片與字幕狀態，尚未進行 AI 摘要。",
+      "transcriptPreview": "",
+      "summary": "已抓到最新影片，AI 摘要尚未啟用。",
       "highlights": [
         "尚未分析",
         "尚未分析",
@@ -78,7 +78,7 @@
         "midTerm": "尚未分析",
         "longTerm": "尚未分析"
       },
-      "warning": "尚未分析"
+      "warning": "目前版本僅抓取最新影片，不進行字幕、語音或 AI 分析。"
     },
     {
       "channel": "科技浪",
@@ -86,12 +86,12 @@
       "title": "EP141 - AI Agent 沒想像中有用？個人 AI 裝置即將迎來革命！哈利的 COMPUTEX 逛展心得",
       "publishDate": "未知",
       "url": "https://www.youtube.com/watch?v=LGY_bR5OXBo",
-      "transcriptStatus": "字幕偵測失敗",
-      "transcriptSource": "error",
+      "transcriptStatus": "暫未啟用",
+      "transcriptSource": "disabled",
       "transcriptLanguage": "unknown",
       "transcriptLength": 0,
-      "transcriptPreview": "type object 'YouTubeTranscriptApi' has no attribute 'list_transcripts'",
-      "summary": "已抓到最新影片與字幕狀態，尚未進行 AI 摘要。",
+      "transcriptPreview": "",
+      "summary": "已抓到最新影片，AI 摘要尚未啟用。",
       "highlights": [
         "尚未分析",
         "尚未分析",
@@ -104,18 +104,18 @@
         "midTerm": "尚未分析",
         "longTerm": "尚未分析"
       },
-      "warning": "尚未分析"
+      "warning": "目前版本僅抓取最新影片，不進行字幕、語音或 AI 分析。"
     }
   ],
   "consensus": {
     "commonTopics": [
-      "尚未分析"
+      "AI 摘要尚未啟用"
     ],
     "differentViews": [
-      "尚未分析"
+      "AI 摘要尚未啟用"
     ],
     "marketFocus": [
-      "尚未分析"
+      "AI 摘要尚未啟用"
     ]
   }
 }
