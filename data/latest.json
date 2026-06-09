@@ -1,6 +1,6 @@
 {
-  "status": "AI 摘要更新完成",
-  "lastUpdated": "2026/06/09 15:28",
+  "status": "OpenRouter 摘要更新完成",
+  "lastUpdated": "2026/06/09 16:46",
   "videos": [
     {
       "channel": "游庭皓",
@@ -8,23 +8,23 @@
       "title": "2026/6/9(二)OpenAI將上市 蘋果衝AI 市場不買單! 美股大彈 修正結束了?【早晨財經速解讀】",
       "publishDate": "未知",
       "url": "https://www.youtube.com/watch?v=8H0D_RYS-zQ",
-      "transcriptStatus": "文字稿或 AI 分析失敗",
+      "transcriptStatus": "字幕或 AI 分析失敗",
       "transcriptSource": "error",
       "transcriptLength": 0,
-      "summary": "AI 摘要失敗：WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing\nERROR: [youtube] 8H0D_RYS-zQ: Sign in to confirm ",
+      "summary": "摘要失敗：WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing\nERROR: [youtube] 8H0D_RYS-zQ: Sign in to confirm you’re not a bot. Use --cookies-from-bro",
       "highlights": [
-        "AI 摘要失敗",
-        "AI 摘要失敗",
-        "AI 摘要失敗",
-        "AI 摘要失敗",
-        "AI 摘要失敗"
+        "摘要失敗",
+        "摘要失敗",
+        "摘要失敗",
+        "摘要失敗",
+        "摘要失敗"
       ],
       "investmentInsight": {
-        "shortTerm": "AI 摘要失敗",
-        "midTerm": "AI 摘要失敗",
-        "longTerm": "AI 摘要失敗"
+        "shortTerm": "摘要失敗",
+        "midTerm": "摘要失敗",
+        "longTerm": "摘要失敗"
       },
-      "warning": "請確認 Gemini API 額度或查看 GitHub Actions log。"
+      "warning": "請查看 GitHub Actions log，可能是 OpenRouter 額度、YouTube 字幕或 yt-dlp 問題。"
     },
     {
       "channel": "股癌",
@@ -32,23 +32,23 @@
       "title": "EP668 | 🦞",
       "publishDate": "未知",
       "url": "https://www.youtube.com/watch?v=xgOQsb-MIGY",
-      "transcriptStatus": "文字稿或 AI 分析失敗",
+      "transcriptStatus": "字幕或 AI 分析失敗",
       "transcriptSource": "error",
       "transcriptLength": 0,
-      "summary": "AI 摘要失敗：WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing\nERROR: [youtube] xgOQsb-MIGY: Sign in to confirm ",
+      "summary": "摘要失敗：WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing\nERROR: [youtube] xgOQsb-MIGY: Sign in to confirm you’re not a bot. Use --cookies-from-bro",
       "highlights": [
-        "AI 摘要失敗",
-        "AI 摘要失敗",
-        "AI 摘要失敗",
-        "AI 摘要失敗",
-        "AI 摘要失敗"
+        "摘要失敗",
+        "摘要失敗",
+        "摘要失敗",
+        "摘要失敗",
+        "摘要失敗"
       ],
       "investmentInsight": {
-        "shortTerm": "AI 摘要失敗",
-        "midTerm": "AI 摘要失敗",
-        "longTerm": "AI 摘要失敗"
+        "shortTerm": "摘要失敗",
+        "midTerm": "摘要失敗",
+        "longTerm": "摘要失敗"
       },
-      "warning": "請確認 Gemini API 額度或查看 GitHub Actions log。"
+      "warning": "請查看 GitHub Actions log，可能是 OpenRouter 額度、YouTube 字幕或 yt-dlp 問題。"
     },
     {
       "channel": "M觀點",
@@ -56,23 +56,23 @@
       "title": "EP309. 谷歌租 xAI 算力、微軟低調的新模型、股市修正終於來了嗎 | M觀點",
       "publishDate": "未知",
       "url": "https://www.youtube.com/watch?v=Z_5j7gsYlNc",
-      "transcriptStatus": "文字稿或 AI 分析失敗",
+      "transcriptStatus": "字幕或 AI 分析失敗",
       "transcriptSource": "error",
       "transcriptLength": 0,
-      "summary": "AI 摘要失敗：WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing\nERROR: [youtube] Z_5j7gsYlNc: Sign in to confirm ",
+      "summary": "摘要失敗：WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing\nERROR: [youtube] Z_5j7gsYlNc: Sign in to confirm you’re not a bot. Use --cookies-from-bro",
       "highlights": [
-        "AI 摘要失敗",
-        "AI 摘要失敗",
-        "AI 摘要失敗",
-        "AI 摘要失敗",
-        "AI 摘要失敗"
+        "摘要失敗",
+        "摘要失敗",
+        "摘要失敗",
+        "摘要失敗",
+        "摘要失敗"
       ],
       "investmentInsight": {
-        "shortTerm": "AI 摘要失敗",
-        "midTerm": "AI 摘要失敗",
-        "longTerm": "AI 摘要失敗"
+        "shortTerm": "摘要失敗",
+        "midTerm": "摘要失敗",
+        "longTerm": "摘要失敗"
       },
-      "warning": "請確認 Gemini API 額度或查看 GitHub Actions log。"
+      "warning": "請查看 GitHub Actions log，可能是 OpenRouter 額度、YouTube 字幕或 yt-dlp 問題。"
     },
     {
       "channel": "科技浪",
@@ -80,39 +80,28 @@
       "title": "EP141 - AI Agent 沒想像中有用？個人 AI 裝置即將迎來革命！哈利的 COMPUTEX 逛展心得",
       "publishDate": "未知",
       "url": "https://www.youtube.com/watch?v=LGY_bR5OXBo",
-      "transcriptStatus": "文字稿或 AI 分析失敗",
+      "transcriptStatus": "字幕或 AI 分析失敗",
       "transcriptSource": "error",
       "transcriptLength": 0,
-      "summary": "AI 摘要失敗：WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing\nERROR: [youtube] LGY_bR5OXBo: Sign in to confirm ",
+      "summary": "摘要失敗：WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing\nERROR: [youtube] LGY_bR5OXBo: Sign in to confirm you’re not a bot. Use --cookies-from-bro",
       "highlights": [
-        "AI 摘要失敗",
-        "AI 摘要失敗",
-        "AI 摘要失敗",
-        "AI 摘要失敗",
-        "AI 摘要失敗"
+        "摘要失敗",
+        "摘要失敗",
+        "摘要失敗",
+        "摘要失敗",
+        "摘要失敗"
       ],
       "investmentInsight": {
-        "shortTerm": "AI 摘要失敗",
-        "midTerm": "AI 摘要失敗",
-        "longTerm": "AI 摘要失敗"
+        "shortTerm": "摘要失敗",
+        "midTerm": "摘要失敗",
+        "longTerm": "摘要失敗"
       },
-      "warning": "請確認 Gemini API 額度或查看 GitHub Actions log。"
+      "warning": "請查看 GitHub Actions log，可能是 OpenRouter 額度、YouTube 字幕或 yt-dlp 問題。"
     }
   ],
   "consensus": {
-    "commonTopics": [
-      "AI 技術與應用發展 (涵蓋OpenAI、Apple AI、xAI、Microsoft新模型、AI Agent、個人AI裝置等議題)",
-      "股市表現與市場修正的討論 (包括美股走勢、修正是否結束或來臨)"
-    ],
-    "differentViews": [
-      "市場對於特定科技公司（如蘋果）AI策略接受度的分歧或疑問",
-      "對於股市修正是否已經結束或即將發生的不同看法或不確定性討論"
-    ],
-    "marketFocus": [
-      "主要科技公司（OpenAI、Apple、Google、Microsoft、xAI）在AI領域的最新動態與合作",
-      "AI Agent與個人AI裝置等新興AI應用與硬體趨勢",
-      "COMPUTEX展會所揭示的產業發展與觀察",
-      "美股市場的走勢與潛在修正的可能性"
-    ]
+    "commonTopics": [],
+    "differentViews": [],
+    "marketFocus": []
   }
 }
