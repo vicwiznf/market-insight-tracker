@@ -1,121 +1,137 @@
 {
-  "status": "最後更新成功",
-  "lastUpdated": "2026/06/09 14:31",
+  "status": "部分逐字稿產出失敗",
+  "lastUpdated": "2026/06/09 14:56",
   "videos": [
     {
       "channel": "游庭皓",
-      "videoId": "8H0D_RYS-zQ",
-      "title": "2026/6/9(二)OpenAI將上市 蘋果衝AI 市場不買單! 美股大彈 修正結束了?【早晨財經速解讀】",
+      "key": "yutinghao",
+      "videoId": "unknown",
+      "title": "逐字稿產出失敗",
       "publishDate": "未知",
-      "url": "https://www.youtube.com/watch?v=8H0D_RYS-zQ",
-      "transcriptStatus": "暫未啟用",
-      "transcriptSource": "disabled",
+      "url": "https://www.youtube.com/@yutinghaofinance/streams",
+      "transcriptStatus": "逐字稿產出失敗",
+      "transcriptSource": "error",
       "transcriptLanguage": "unknown",
       "transcriptLength": 0,
-      "transcriptPreview": "",
-      "summary": "已抓到最新影片，AI 摘要尚未啟用。",
+      "transcriptPreview": "WARNING: [youtube] No supported JavaScript runtime could be found. Only deno is enabled by default; to use another runtime add  --js-runtimes RUNTIME[:PATH]  to your command/config. YouTube extraction without a JS runtime has been deprecated, and some formats may be missing. See  https://github.com/",
+      "transcriptPath": "",
+      "chunkCount": 0,
+      "chunkPaths": [],
+      "summary": "逐字稿產出失敗。",
       "highlights": [
-        "尚未分析",
-        "尚未分析",
-        "尚未分析",
-        "尚未分析",
-        "尚未分析"
+        "失敗",
+        "失敗",
+        "失敗",
+        "失敗",
+        "失敗"
       ],
       "investmentInsight": {
-        "shortTerm": "尚未分析",
-        "midTerm": "尚未分析",
-        "longTerm": "尚未分析"
+        "shortTerm": "失敗",
+        "midTerm": "失敗",
+        "longTerm": "失敗"
       },
-      "warning": "目前版本僅抓取最新影片，不進行字幕、語音或 AI 分析。"
+      "warning": "請查看 GitHub Actions log。"
     },
     {
       "channel": "股癌",
-      "videoId": "xgOQsb-MIGY",
-      "title": "EP668 | 🦞",
+      "key": "gooaye",
+      "videoId": "unknown",
+      "title": "逐字稿產出失敗",
       "publishDate": "未知",
-      "url": "https://www.youtube.com/watch?v=xgOQsb-MIGY",
-      "transcriptStatus": "暫未啟用",
-      "transcriptSource": "disabled",
+      "url": "https://www.youtube.com/@Gooaye/videos",
+      "transcriptStatus": "逐字稿產出失敗",
+      "transcriptSource": "error",
       "transcriptLanguage": "unknown",
       "transcriptLength": 0,
-      "transcriptPreview": "",
-      "summary": "已抓到最新影片，AI 摘要尚未啟用。",
+      "transcriptPreview": "WARNING: [youtube] No supported JavaScript runtime could be found. Only deno is enabled by default; to use another runtime add  --js-runtimes RUNTIME[:PATH]  to your command/config. YouTube extraction without a JS runtime has been deprecated, and some formats may be missing. See  https://github.com/",
+      "transcriptPath": "",
+      "chunkCount": 0,
+      "chunkPaths": [],
+      "summary": "逐字稿產出失敗。",
       "highlights": [
-        "尚未分析",
-        "尚未分析",
-        "尚未分析",
-        "尚未分析",
-        "尚未分析"
+        "失敗",
+        "失敗",
+        "失敗",
+        "失敗",
+        "失敗"
       ],
       "investmentInsight": {
-        "shortTerm": "尚未分析",
-        "midTerm": "尚未分析",
-        "longTerm": "尚未分析"
+        "shortTerm": "失敗",
+        "midTerm": "失敗",
+        "longTerm": "失敗"
       },
-      "warning": "目前版本僅抓取最新影片，不進行字幕、語音或 AI 分析。"
+      "warning": "請查看 GitHub Actions log。"
     },
     {
       "channel": "M觀點",
-      "videoId": "Z_5j7gsYlNc",
-      "title": "EP309. 谷歌租 xAI 算力、微軟低調的新模型、股市修正終於來了嗎 | M觀點",
+      "key": "miula",
+      "videoId": "unknown",
+      "title": "逐字稿產出失敗",
       "publishDate": "未知",
-      "url": "https://www.youtube.com/watch?v=Z_5j7gsYlNc",
-      "transcriptStatus": "暫未啟用",
-      "transcriptSource": "disabled",
+      "url": "https://www.youtube.com/@miulaviewpoint/streams",
+      "transcriptStatus": "逐字稿產出失敗",
+      "transcriptSource": "error",
       "transcriptLanguage": "unknown",
       "transcriptLength": 0,
-      "transcriptPreview": "",
-      "summary": "已抓到最新影片，AI 摘要尚未啟用。",
+      "transcriptPreview": "WARNING: [youtube] No supported JavaScript runtime could be found. Only deno is enabled by default; to use another runtime add  --js-runtimes RUNTIME[:PATH]  to your command/config. YouTube extraction without a JS runtime has been deprecated, and some formats may be missing. See  https://github.com/",
+      "transcriptPath": "",
+      "chunkCount": 0,
+      "chunkPaths": [],
+      "summary": "逐字稿產出失敗。",
       "highlights": [
-        "尚未分析",
-        "尚未分析",
-        "尚未分析",
-        "尚未分析",
-        "尚未分析"
+        "失敗",
+        "失敗",
+        "失敗",
+        "失敗",
+        "失敗"
       ],
       "investmentInsight": {
-        "shortTerm": "尚未分析",
-        "midTerm": "尚未分析",
-        "longTerm": "尚未分析"
+        "shortTerm": "失敗",
+        "midTerm": "失敗",
+        "longTerm": "失敗"
       },
-      "warning": "目前版本僅抓取最新影片，不進行字幕、語音或 AI 分析。"
+      "warning": "請查看 GitHub Actions log。"
     },
     {
       "channel": "科技浪",
-      "videoId": "LGY_bR5OXBo",
-      "title": "EP141 - AI Agent 沒想像中有用？個人 AI 裝置即將迎來革命！哈利的 COMPUTEX 逛展心得",
+      "key": "techwav",
+      "videoId": "unknown",
+      "title": "逐字稿產出失敗",
       "publishDate": "未知",
-      "url": "https://www.youtube.com/watch?v=LGY_bR5OXBo",
-      "transcriptStatus": "暫未啟用",
-      "transcriptSource": "disabled",
+      "url": "https://www.youtube.com/@tech_wav/videos",
+      "transcriptStatus": "逐字稿產出失敗",
+      "transcriptSource": "error",
       "transcriptLanguage": "unknown",
       "transcriptLength": 0,
-      "transcriptPreview": "",
-      "summary": "已抓到最新影片，AI 摘要尚未啟用。",
+      "transcriptPreview": "WARNING: [youtube] No supported JavaScript runtime could be found. Only deno is enabled by default; to use another runtime add  --js-runtimes RUNTIME[:PATH]  to your command/config. YouTube extraction without a JS runtime has been deprecated, and some formats may be missing. See  https://github.com/",
+      "transcriptPath": "",
+      "chunkCount": 0,
+      "chunkPaths": [],
+      "summary": "逐字稿產出失敗。",
       "highlights": [
-        "尚未分析",
-        "尚未分析",
-        "尚未分析",
-        "尚未分析",
-        "尚未分析"
+        "失敗",
+        "失敗",
+        "失敗",
+        "失敗",
+        "失敗"
       ],
       "investmentInsight": {
-        "shortTerm": "尚未分析",
-        "midTerm": "尚未分析",
-        "longTerm": "尚未分析"
+        "shortTerm": "失敗",
+        "midTerm": "失敗",
+        "longTerm": "失敗"
       },
-      "warning": "目前版本僅抓取最新影片，不進行字幕、語音或 AI 分析。"
+      "warning": "請查看 GitHub Actions log。"
     }
   ],
   "consensus": {
     "commonTopics": [
-      "AI 摘要尚未啟用"
+      "逐字稿已產出，AI 摘要尚未啟用"
     ],
     "differentViews": [
-      "AI 摘要尚未啟用"
+      "逐字稿已產出，AI 摘要尚未啟用"
     ],
     "marketFocus": [
-      "AI 摘要尚未啟用"
+      "逐字稿已產出，AI 摘要尚未啟用"
     ]
   }
 }
