@@ -5,13 +5,11 @@ from pathlib import Path
 
 import requests
 
-
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
 OUTPUT_FILE = DATA_DIR / "latest.json"
 
 TAIWAN_TZ = timezone(timedelta(hours=8))
-
 
 CHANNELS = [
     {
@@ -70,7 +68,6 @@ def main():
     videos = []
 
     for channel in CHANNELS:
-        print(channel["channel"])
         videos.append(get_latest_video(channel))
 
     now = datetime.now(TAIWAN_TZ)
