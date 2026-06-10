@@ -12,7 +12,6 @@ async function loadData() {
     renderVideos(data.videos);
 }
 
-
 function renderVideos(videos) {
 
     const container = document.getElementById("video-cards");
@@ -22,7 +21,6 @@ function renderVideos(videos) {
     videos.forEach(video => {
 
         container.innerHTML += `
-
         <div class="card">
 
             <h2>${video.channel}</h2>
@@ -38,7 +36,6 @@ function renderVideos(videos) {
             </p>
 
         </div>
-
         `;
     });
 }
