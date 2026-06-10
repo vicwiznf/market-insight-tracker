@@ -49,6 +49,17 @@ def get_latest_video(channel):
 
     data = response.json()
 
+    print("==========")
+    print(channel["channel"])
+    print(data)
+    print("==========")
+
+    if "items" not in data:
+        raise RuntimeError(data)
+
+    if len(data["items"]) == 0:
+        raise RuntimeError(f"{channel['channel']} 找不到影片")
+
     item = data["items"][0]
 
     video_id = item["id"]["videoId"]
