@@ -12,7 +12,7 @@ TAIWAN_TZ = timezone(timedelta(hours=8))
 SOURCES = [
     {
         "channel": "游庭皓",
-        "url": "https://www.youtube.com/@yutinghaofinance/videos"
+        "url": "https://www.youtube.com/@yutinghaofinance/streams"
     },
     {
         "channel": "股癌",
@@ -20,7 +20,7 @@ SOURCES = [
     },
     {
         "channel": "M觀點",
-        "url": "https://www.youtube.com/@miulaviewpoint/videos"
+        "url": "https://www.youtube.com/@miulaviewpoint/streams"
     },
     {
         "channel": "科技浪",
@@ -46,13 +46,22 @@ def get_latest_video(source):
     if result.returncode != 0:
         raise RuntimeError(result.stderr)
 
-    item = json.loads(result.stdout.splitlines()[0])
+    lines = [line for line in result.stdout.splitlines() if line.strip()]
 
-    video_id = item["id"]
+    if not lines:
+        raise RuntimeError(f"{source['channel']} 找不到影片")
+
+    item = json.loads(lines[0])
+
+    video_id = item.get("id")
+    title = item.get("title", "無標題")
+
+    if not video_id:
+        raise RuntimeError(f"{source['channel']} 找不到影片 ID")
 
     return {
         "channel": source["channel"],
-        "title": item["title"],
+        "title": title,
         "publishDate": "未知",
         "url": f"https://www.youtube.com/watch?v={video_id}"
     }
@@ -65,7 +74,10 @@ def main():
     videos = []
 
     for source in SOURCES:
-        videos.append(get_latest_video(source))
+        print(f"處理：{source['channel']}")
+        video = get_latest_video(source)
+        print(video)
+        videos.append(video)
 
     now = datetime.now(TAIWAN_TZ)
 
