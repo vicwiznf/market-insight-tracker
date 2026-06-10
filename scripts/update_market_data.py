@@ -1,9 +1,7 @@
 import json
-import os
+import subprocess
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
-
-import requests
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = ROOT / "data"
@@ -11,55 +9,51 @@ OUTPUT_FILE = DATA_DIR / "latest.json"
 
 TAIWAN_TZ = timezone(timedelta(hours=8))
 
-CHANNELS = [
+SOURCES = [
     {
         "channel": "游庭皓",
-        "username": "yutinghaofinance"
+        "url": "https://www.youtube.com/@yutinghaofinance/videos"
     },
     {
         "channel": "股癌",
-        "username": "Gooaye"
+        "url": "https://www.youtube.com/@Gooaye/videos"
     },
     {
         "channel": "M觀點",
-        "username": "miulaviewpoint"
+        "url": "https://www.youtube.com/@miulaviewpoint/videos"
     },
     {
         "channel": "科技浪",
-        "username": "tech_wav"
+        "url": "https://www.youtube.com/@tech_wav/videos"
     }
 ]
 
 
-def get_latest_video(channel):
+def get_latest_video(source):
 
-    api_key = os.environ["YOUTUBE_API_KEY"]
-
-    response = requests.get(
-        "https://www.googleapis.com/youtube/v3/search",
-        params={
-            "key": api_key,
-            "part": "snippet",
-            "q": channel["username"],
-            "type": "video",
-            "order": "date",
-            "maxResults": 1
-        }
+    result = subprocess.run(
+        [
+            "yt-dlp",
+            "--flat-playlist",
+            "--playlist-end", "1",
+            "--dump-json",
+            source["url"]
+        ],
+        capture_output=True,
+        text=True
     )
 
-    data = response.json()
+    if result.returncode != 0:
+        raise RuntimeError(result.stderr)
 
-    if "items" not in data or len(data["items"]) == 0:
-        raise RuntimeError(f"{channel['channel']} 找不到影片")
+    item = json.loads(result.stdout.splitlines()[0])
 
-    item = data["items"][0]
-
-    video_id = item["id"]["videoId"]
+    video_id = item["id"]
 
     return {
-        "channel": channel["channel"],
-        "title": item["snippet"]["title"],
-        "publishDate": item["snippet"]["publishedAt"],
+        "channel": source["channel"],
+        "title": item["title"],
+        "publishDate": "未知",
         "url": f"https://www.youtube.com/watch?v={video_id}"
     }
 
@@ -70,8 +64,8 @@ def main():
 
     videos = []
 
-    for channel in CHANNELS:
-        videos.append(get_latest_video(channel))
+    for source in SOURCES:
+        videos.append(get_latest_video(source))
 
     now = datetime.now(TAIWAN_TZ)
 
