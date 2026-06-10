@@ -1,107 +1,30 @@
 {
-  "status": "OpenRouter 摘要更新完成",
-  "lastUpdated": "2026/06/09 16:46",
+  "status": "更新成功",
+  "lastUpdated": "2026/06/10 09:54",
   "videos": [
     {
       "channel": "游庭皓",
-      "videoId": "8H0D_RYS-zQ",
-      "title": "2026/6/9(二)OpenAI將上市 蘋果衝AI 市場不買單! 美股大彈 修正結束了?【早晨財經速解讀】",
+      "title": "【會員專屬 – 專題影片】SpaceX上市",
       "publishDate": "未知",
-      "url": "https://www.youtube.com/watch?v=8H0D_RYS-zQ",
-      "transcriptStatus": "字幕或 AI 分析失敗",
-      "transcriptSource": "error",
-      "transcriptLength": 0,
-      "summary": "摘要失敗：WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing\nERROR: [youtube] 8H0D_RYS-zQ: Sign in to confirm you’re not a bot. Use --cookies-from-bro",
-      "highlights": [
-        "摘要失敗",
-        "摘要失敗",
-        "摘要失敗",
-        "摘要失敗",
-        "摘要失敗"
-      ],
-      "investmentInsight": {
-        "shortTerm": "摘要失敗",
-        "midTerm": "摘要失敗",
-        "longTerm": "摘要失敗"
-      },
-      "warning": "請查看 GitHub Actions log，可能是 OpenRouter 額度、YouTube 字幕或 yt-dlp 問題。"
+      "url": "https://www.youtube.com/watch?v=5VROvuAamyk"
     },
     {
       "channel": "股癌",
-      "videoId": "xgOQsb-MIGY",
       "title": "EP668 | 🦞",
       "publishDate": "未知",
-      "url": "https://www.youtube.com/watch?v=xgOQsb-MIGY",
-      "transcriptStatus": "字幕或 AI 分析失敗",
-      "transcriptSource": "error",
-      "transcriptLength": 0,
-      "summary": "摘要失敗：WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing\nERROR: [youtube] xgOQsb-MIGY: Sign in to confirm you’re not a bot. Use --cookies-from-bro",
-      "highlights": [
-        "摘要失敗",
-        "摘要失敗",
-        "摘要失敗",
-        "摘要失敗",
-        "摘要失敗"
-      ],
-      "investmentInsight": {
-        "shortTerm": "摘要失敗",
-        "midTerm": "摘要失敗",
-        "longTerm": "摘要失敗"
-      },
-      "warning": "請查看 GitHub Actions log，可能是 OpenRouter 額度、YouTube 字幕或 yt-dlp 問題。"
+      "url": "https://www.youtube.com/watch?v=xgOQsb-MIGY"
     },
     {
       "channel": "M觀點",
-      "videoId": "Z_5j7gsYlNc",
-      "title": "EP309. 谷歌租 xAI 算力、微軟低調的新模型、股市修正終於來了嗎 | M觀點",
+      "title": "EP279. M觀點感謝祭特別集 - 川普執政一周年總評｜M觀點",
       "publishDate": "未知",
-      "url": "https://www.youtube.com/watch?v=Z_5j7gsYlNc",
-      "transcriptStatus": "字幕或 AI 分析失敗",
-      "transcriptSource": "error",
-      "transcriptLength": 0,
-      "summary": "摘要失敗：WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing\nERROR: [youtube] Z_5j7gsYlNc: Sign in to confirm you’re not a bot. Use --cookies-from-bro",
-      "highlights": [
-        "摘要失敗",
-        "摘要失敗",
-        "摘要失敗",
-        "摘要失敗",
-        "摘要失敗"
-      ],
-      "investmentInsight": {
-        "shortTerm": "摘要失敗",
-        "midTerm": "摘要失敗",
-        "longTerm": "摘要失敗"
-      },
-      "warning": "請查看 GitHub Actions log，可能是 OpenRouter 額度、YouTube 字幕或 yt-dlp 問題。"
+      "url": "https://www.youtube.com/watch?v=kQd00_Ak4kY"
     },
     {
       "channel": "科技浪",
-      "videoId": "LGY_bR5OXBo",
       "title": "EP141 - AI Agent 沒想像中有用？個人 AI 裝置即將迎來革命！哈利的 COMPUTEX 逛展心得",
       "publishDate": "未知",
-      "url": "https://www.youtube.com/watch?v=LGY_bR5OXBo",
-      "transcriptStatus": "字幕或 AI 分析失敗",
-      "transcriptSource": "error",
-      "transcriptLength": 0,
-      "summary": "摘要失敗：WARNING: [youtube] No title found in player responses; falling back to title from initial data. Other metadata may also be missing\nERROR: [youtube] LGY_bR5OXBo: Sign in to confirm you’re not a bot. Use --cookies-from-bro",
-      "highlights": [
-        "摘要失敗",
-        "摘要失敗",
-        "摘要失敗",
-        "摘要失敗",
-        "摘要失敗"
-      ],
-      "investmentInsight": {
-        "shortTerm": "摘要失敗",
-        "midTerm": "摘要失敗",
-        "longTerm": "摘要失敗"
-      },
-      "warning": "請查看 GitHub Actions log，可能是 OpenRouter 額度、YouTube 字幕或 yt-dlp 問題。"
+      "url": "https://www.youtube.com/watch?v=LGY_bR5OXBo"
     }
-  ],
-  "consensus": {
-    "commonTopics": [],
-    "differentViews": [],
-    "marketFocus": []
-  }
+  ]
 }
