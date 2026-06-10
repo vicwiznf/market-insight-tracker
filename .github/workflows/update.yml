@@ -9,7 +9,7 @@ permissions:
 jobs:
   update:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 10
 
     steps:
       - name: Checkout repository
@@ -20,29 +20,23 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
       - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Show versions
         run: |
-          python --version
-          node --version
-          yt-dlp --version
+          pip install -r requirements.txt
 
       - name: Update market data
         env:
-          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-        run: python scripts/update_market_data.py
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: |
+          python scripts/update_market_data.py
 
       - name: Commit updated data
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
+
           git add data/latest.json
-          git commit -m "Update OpenRouter market summary" || echo "No changes to commit"
+
+          git commit -m "Update latest videos" || echo "No changes to commit"
+
           git push
